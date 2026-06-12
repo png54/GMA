@@ -74,13 +74,13 @@
     }
 
     .nav-logo img {
-      height: 64px; /* Augmenté de 48px à 64px */
+      height: 64px;
       width: auto;
       display: block;
       transition: height var(--transition);
     }
 
-    #navbar.scrolled .nav-logo img { height: 56px; } /* Garder une belle proportion */
+    #navbar.scrolled .nav-logo img { height: 56px; }
 
     .nav-links {
       display: flex;
@@ -453,9 +453,6 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .about-logo-wrap::before {
@@ -473,17 +470,16 @@
     }
 
     .about-badge {
-      position: absolute;
-      bottom: -16px;
-      right: 24px;
+      display: inline-block;
+      margin-top: 25px;
       background: var(--orange);
       color: var(--white);
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.78rem;
+      font-size: 0.9rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 10px 18px;
+      padding: 8px 25px;
       border-radius: 6px;
       box-shadow: 0 4px 16px rgba(244,121,32,0.4);
     }
@@ -696,9 +692,9 @@
     ============================================================ */
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 60px;
-      max-width: 1000px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
@@ -708,18 +704,22 @@
       font-size: 1.6rem;
       color: var(--navy);
       margin-bottom: 1rem;
+      text-align: center;
     }
 
     .contact-info p {
       color: var(--text-muted);
       line-height: 1.75;
       margin-bottom: 2rem;
+      text-align: center;
     }
 
     .contact-items {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     .contact-item {
@@ -766,51 +766,103 @@
       font-size: 0.85rem;
     }
 
+    /* ============================================================
+       SOCIAL MEDIA - NEW STYLING
+    ============================================================ */
     .social-section {
-      margin-top: 2rem;
+      margin-top: 3rem;
+      text-align: center;
     }
 
     .social-section h4 {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 14px;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .social-section h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 25%;
+      width: 50%;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
     }
 
     .social-links {
       display: flex;
-      gap: 10px;
+      gap: 18px;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
     .social-link {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: var(--gray-light);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(27, 58, 110, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--navy);
-      font-size: 1rem;
+      font-size: 1.6rem;
       text-decoration: none;
-      transition: all var(--transition);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(244, 121, 32, 0.25);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, var(--orange), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .social-link i {
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
     }
 
     .social-link:hover {
-      background: var(--orange);
-      color: var(--white);
-      transform: translateY(-2px);
+      transform: translateY(-8px) scale(1.1);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 15px 25px -8px rgba(0, 0, 0, 0.2);
     }
 
-    .social-link.placeholder-link {
-      opacity: 0.4;
-      cursor: default;
+    .social-link:hover::before {
+      opacity: 1;
     }
+
+    .social-link:hover i {
+      transform: scale(1.1);
+    }
+
+    /* Custom colors for each platform */
+    .social-link[data-platform="facebook"]:hover { background: #1877f2; }
+    .social-link[data-platform="instagram"]:hover { background: linear-gradient(45deg, #f09433, #d62976, #962fbf); }
+    .social-link[data-platform="linkedin"]:hover { background: #0077b5; }
+    .social-link[data-platform="youtube"]:hover { background: #ff0000; }
+    .social-link[data-platform="twitter"]:hover { background: #1da1f2; }
 
     /* ============================================================
        FOOTER
@@ -831,10 +883,9 @@
     }
 
     .footer-brand img {
-      height: 56px; /* Augmenté pour correspondre à la nouvelle taille */
+      height: 56px;
       width: auto;
       margin-bottom: 1rem;
-      /* Suppression du filtre pour que le logo s'affiche normalement */
     }
 
     .footer-brand p {
@@ -929,9 +980,13 @@
       .hamburger { display: flex; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .services-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
       .hero-buttons { flex-direction: column; align-items: flex-start; }
+      .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -951,7 +1006,6 @@
   ======================================================== -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
-      <!-- Nouveau logo avec le lien fourni -->
       <img src="https://d.top4top.io/p_3815nxpsv1.png" alt="Global Media Algérie" />
     </a>
     <ul class="nav-links">
@@ -1031,16 +1085,13 @@
     <div class="scroll-indicator">Défiler</div>
   </section>
 
-  <!-- SECTION STATS STRIP SUPPRIMÉE -->
-
   <!-- ========================================================
-       ABOUT
+       ABOUT (مع إصلاح ظهور Algérie)
   ======================================================== -->
   <section id="about" class="section section-alt">
     <div class="about-grid">
       <div class="about-visual animate-up">
         <div class="about-logo-wrap">
-          <!-- Nouveau logo dans la section about également -->
           <img src="https://d.top4top.io/p_3815nxpsv1.png" alt="Logo Global Media Algérie" />
           <div class="about-badge">Algérie</div>
         </div>
@@ -1145,7 +1196,7 @@
   </section>
 
   <!-- ========================================================
-       CONTACT (Sans formulaire de message)
+       CONTACT (بدون نموذج إرسال رسائل + أيقونات تواصل اجتماعي فخمة)
   ======================================================== -->
   <section id="contact" class="section section-alt">
     <div class="section-header animate-up">
@@ -1182,20 +1233,28 @@
           </div>
         </div>
 
+        <!-- جديد: أيقونات وسائل التواصل الاجتماعي الفخمة -->
         <div class="social-section">
           <h4>Suivez-nous</h4>
           <div class="social-links">
-            <a href="#" class="social-link placeholder-link" title="Facebook — à renseigner"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link placeholder-link" title="Instagram — à renseigner"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link placeholder-link" title="LinkedIn — à renseigner"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-link placeholder-link" title="YouTube — à renseigner"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-link placeholder-link" title="Twitter/X — à renseigner"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-link" data-platform="facebook" title="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" data-platform="instagram" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" data-platform="linkedin" title="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link" data-platform="youtube" title="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link" data-platform="twitter" title="Twitter/X">
+              <i class="fab fa-x-twitter"></i>
+            </a>
           </div>
         </div>
       </div>
-
-      <!-- PARTIE FORMULAIRE DE CONTACT SUPPRIMÉE -->
-
     </div>
   </section>
 
@@ -1205,7 +1264,6 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <!-- Nouveau logo dans le footer -->
         <img src="https://d.top4top.io/p_3815nxpsv1.png" alt="Global Media Algérie" />
         <p>Agence de communication et conseil stratégique au service de votre visibilité et de votre développement en Algérie et à l'international.</p>
       </div>
@@ -1229,7 +1287,6 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <!-- Année modifiée à 2026 -->
       <p class="footer-copy">© 2026 <span>Global Media Algérie</span>. Tous droits réservés.</p>
       <p class="footer-made">De l'idée à la diffusion.</p>
     </div>
