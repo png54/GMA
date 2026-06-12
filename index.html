@@ -338,38 +338,6 @@
       transform: translateY(-2px);
     }
 
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255,255,255,0.45);
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-family: var(--font-display);
-      animation: fadeInUp 1s ease 1s both;
-    }
-
-    .scroll-indicator::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-      animation: scrollLine 1.5s ease-in-out infinite;
-    }
-
-    @keyframes scrollLine {
-      0%, 100% { transform: scaleY(1); opacity: 1; }
-      50% { transform: scaleY(0.5); opacity: 0.4; }
-    }
-
     /* ============================================================
        SECTION COMMONS
     ============================================================ */
@@ -1030,7 +998,7 @@
   </div>
 
   <!-- ========================================================
-       HERO
+       HERO (بدون عنصر Défiler)
   ======================================================== -->
   <section id="hero">
     <div class="hero-bg-dots">
@@ -1081,8 +1049,6 @@
         </a>
       </div>
     </div>
-
-    <div class="scroll-indicator">Défiler</div>
   </section>
 
   <!-- ========================================================
@@ -1233,7 +1199,6 @@
           </div>
         </div>
 
-        <!-- جديد: أيقونات وسائل التواصل الاجتماعي الفخمة -->
         <div class="social-section">
           <h4>Suivez-nous</h4>
           <div class="social-links">
