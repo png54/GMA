@@ -552,7 +552,7 @@
     }
 
     /* ============================================================
-       GALERIE
+       GALERIE - حجم مناسب للحاسوب
     ============================================================ */
     .gallery-premium {
       padding: 90px 5%;
@@ -560,16 +560,18 @@
     }
 
     .gallery-premium .container-premium {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
+    /* الصورة الرئيسية - حجم مناسب للحاسوب */
     .main-image-container {
       width: 100%;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      margin-bottom: 30px;
       background: #000;
       cursor: pointer;
     }
@@ -577,8 +579,7 @@
     .main-gallery-image {
       width: 100%;
       height: auto;
-      min-height: 450px;
-      max-height: 600px;
+      max-height: 450px;
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
@@ -588,23 +589,24 @@
       transform: scale(1.02);
     }
 
+    /* الصور المصغرة */
     .thumbnails-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
+      gap: 12px;
       margin-top: 20px;
     }
 
     .thumbnail-item {
-      width: 100px;
-      height: 70px;
-      border-radius: 12px;
+      width: 80px;
+      height: 60px;
+      border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
-      border: 3px solid transparent;
+      border: 2px solid transparent;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       position: relative;
     }
 
@@ -632,47 +634,48 @@
     }
 
     .thumbnail-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     }
 
     .thumbnail-item.active {
       border-color: var(--orange);
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(244,121,32,0.4);
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(244,121,32,0.3);
     }
 
+    /* أزرار التحكم */
     .gallery-controls {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
+      gap: 15px;
+      margin-top: 25px;
     }
 
     .gallery-nav-btn {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       background: var(--navy);
       color: var(--white);
       border: none;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1rem;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(30,77,140,0.3);
+      box-shadow: 0 2px 8px rgba(30,77,140,0.3);
     }
 
     .gallery-nav-btn:hover {
       background: var(--orange);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(244,121,32,0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(244,121,32,0.3);
     }
 
     /* ============================================================
-       SECTION RÉFÉRENCE - معرض الصور المصغرة (14 صورة)
+       SECTION RÉFÉRENCE
     ============================================================ */
     .reference-section {
       padding: 90px 5%;
@@ -707,7 +710,6 @@
       border-color: var(--orange);
     }
 
-    /* صورة كاملة بدون قص - فقط تصغير الحجم */
     .ref-item img {
       width: 100%;
       max-width: 90px;
@@ -715,11 +717,11 @@
       object-fit: contain;
       display: block;
       margin: 0 auto;
-      pointer-events: none; /* يجعل النقر يمر على العنصر الأب */
+      pointer-events: none;
     }
 
     /* ============================================================
-       MODAL - نافذة تكبير الصور (تم إصلاحها)
+       MODAL
     ============================================================ */
     .image-modal {
       display: none;
@@ -1244,7 +1246,7 @@
     </div>
   </section>
 
-  <!-- GALERIE SECTION -->
+  <!-- GALERIE SECTION - حجم مناسب للحاسوب -->
   <section id="gallery" class="gallery-premium">
     <div class="container-premium">
       <div class="section-header animate-up">
@@ -1266,7 +1268,7 @@
     </div>
   </section>
 
-  <!-- ========== SECTION RÉFÉRENCE - 14 IMAGES (SANS TEXTE SOUS LES IMAGES) ========== -->
+  <!-- SECTION RÉFÉRENCE -->
   <section id="reference" class="reference-section">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Nos partenaires & références</div>
@@ -1319,7 +1321,7 @@
     </div>
   </section>
 
-  <!-- MODAL POUR L'AGRANDISSEMENT DES IMAGES (AMÉLIORÉ) -->
+  <!-- MODAL -->
   <div id="imageModal" class="image-modal">
     <span class="close-modal" id="closeModalBtn">&times;</span>
     <div class="modal-content" id="modalContent">
@@ -1522,19 +1524,16 @@
     createThumbnails();
     startAutoSlide();
 
-    // ========== SCRIPT POUR L'AGRANDISSEMENT DES IMAGES (MODAL) - Version corrigée ==========
+    // ========== SCRIPT POUR L'AGRANDISSEMENT DES IMAGES (MODAL) ==========
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModalBtn');
-    const modalContent = document.getElementById('modalContent');
     
-    // Fonction pour fermer le modal
     function closeModal() {
       modal.style.display = 'none';
       document.body.style.overflow = 'auto';
     }
     
-    // Fermer avec le bouton X
     if (closeModalBtn) {
       closeModalBtn.addEventListener('click', function(event) {
         event.stopPropagation();
@@ -1542,24 +1541,19 @@
       });
     }
     
-    // Fermer en cliquant sur la zone grise (modal lui-même)
     modal.addEventListener('click', function(event) {
-      // Si on clique sur le fond (modal) et non sur l'image ou le bouton X
       if (event.target === modal) {
         closeModal();
       }
     });
     
-    // Fermer avec la touche Echap
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape' && modal.style.display === 'block') {
         closeModal();
       }
     });
     
-    // Sélectionner tous les éléments .ref-item et ajouter l'événement de clic
     const refItems = document.querySelectorAll('.ref-item');
-    
     refItems.forEach(item => {
       item.addEventListener('click', function(event) {
         event.stopPropagation();
