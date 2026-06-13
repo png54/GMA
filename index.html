@@ -672,7 +672,7 @@
     }
 
     /* ============================================================
-       SECTION RÉFÉRENCE - الصور المصغرة الصغيرة جداً
+       SECTION RÉFÉRENCE - معرض الصور المصغرة (14 صورة)
     ============================================================ */
     .reference-section {
       padding: 90px 5%;
@@ -682,7 +682,7 @@
     .reference-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 1rem;
+      gap: 1.2rem;
       justify-items: center;
       align-items: center;
       max-width: 1100px;
@@ -691,13 +691,14 @@
 
     .ref-item {
       background: var(--white);
-      border-radius: 8px;
-      padding: 0.6rem;
+      border-radius: 10px;
+      padding: 0.8rem;
       box-shadow: 0 2px 8px rgba(30,77,140,0.08);
       text-align: center;
       width: 100%;
       transition: all var(--transition);
       border: 1px solid var(--gray-light);
+      cursor: pointer;
     }
 
     .ref-item:hover {
@@ -706,7 +707,7 @@
       border-color: var(--orange);
     }
 
-    /* الصورة كاملة بدون قص - فقط تصغير الحجم */
+    /* صورة كاملة بدون قص - فقط تصغير الحجم */
     .ref-item img {
       width: 100%;
       max-width: 90px;
@@ -714,13 +715,78 @@
       object-fit: contain;
       display: block;
       margin: 0 auto;
+      pointer-events: none; /* يجعل النقر يمر على العنصر الأب */
     }
 
-    .ref-number {
-      margin-top: 0.5rem;
-      font-size: 0.65rem;
-      color: var(--text-light);
-      font-weight: 500;
+    /* ============================================================
+       MODAL - نافذة تكبير الصور
+    ============================================================ */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      padding: 40px;
+    }
+
+    .modal-content img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: var(--white);
+      font-size: 45px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .close-modal:hover {
+      color: var(--orange);
+      background: rgba(255,255,255,0.2);
+      transform: rotate(90deg);
     }
 
     /* ============================================================
@@ -1198,7 +1264,7 @@
     </div>
   </section>
 
-  <!-- ========== NOUVELLE SECTION RÉFÉRENCE ========== -->
+  <!-- ========== SECTION RÉFÉRENCE - 14 IMAGES (SANS TEXTE SOUS LES IMAGES) ========== -->
   <section id="reference" class="reference-section">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Nos partenaires & références</div>
@@ -1206,22 +1272,59 @@
       <div class="section-line"></div>
     </div>
     <div class="reference-grid">
-      <div class="ref-item animate-up"><img src="https://k.top4top.io/p_3816rz0m31.jpg" alt="Référence 1"><div class="ref-number">Ref 01</div></div>
-      <div class="ref-item animate-up"><img src="https://l.top4top.io/p_3816zs2yn2.jpg" alt="Référence 2"><div class="ref-number">Ref 02</div></div>
-      <div class="ref-item animate-up"><img src="https://a.top4top.io/p_38163yor63.jpg" alt="Référence 3"><div class="ref-number">Ref 03</div></div>
-      <div class="ref-item animate-up"><img src="https://b.top4top.io/p_38163cgzk4.jpg" alt="Référence 4"><div class="ref-number">Ref 04</div></div>
-      <div class="ref-item animate-up"><img src="https://c.top4top.io/p_3816071vc5.jpg" alt="Référence 5"><div class="ref-number">Ref 05</div></div>
-      <div class="ref-item animate-up"><img src="https://d.top4top.io/p_3816wlvm76.jpg" alt="Référence 6"><div class="ref-number">Ref 06</div></div>
-      <div class="ref-item animate-up"><img src="https://e.top4top.io/p_3816x48ko7.jpg" alt="Référence 7"><div class="ref-number">Ref 07</div></div>
-      <div class="ref-item animate-up"><img src="https://f.top4top.io/p_38163cvj88.jpg" alt="Référence 8"><div class="ref-number">Ref 08</div></div>
-      <div class="ref-item animate-up"><img src="https://g.top4top.io/p_3816vbx1m9.jpg" alt="Référence 9"><div class="ref-number">Ref 09</div></div>
-      <div class="ref-item animate-up"><img src="https://h.top4top.io/p_3816urufo10.jpg" alt="Référence 10"><div class="ref-number">Ref 10</div></div>
-      <div class="ref-item animate-up"><img src="https://e.top4top.io/p_3816uwot51.jpg" alt="Référence 11"><div class="ref-number">Ref 11</div></div>
-      <div class="ref-item animate-up"><img src="https://f.top4top.io/p_3816x8gfs2.jpg" alt="Référence 12"><div class="ref-number">Ref 12</div></div>
-      <div class="ref-item animate-up"><img src="https://g.top4top.io/p_3816uuqzk3.jpg" alt="Référence 13"><div class="ref-number">Ref 13</div></div>
-      <div class="ref-item animate-up"><img src="https://h.top4top.io/p_3816l8pni4.jpg" alt="Référence 14"><div class="ref-number">Ref 14</div></div>
+      <!-- الصور الـ 14 - بدون أي نص تحتها -->
+      <div class="ref-item animate-up" data-image="https://k.top4top.io/p_3816rz0m31.jpg">
+        <img src="https://k.top4top.io/p_3816rz0m31.jpg" alt="Référence 1">
+      </div>
+      <div class="ref-item animate-up" data-image="https://l.top4top.io/p_3816zs2yn2.jpg">
+        <img src="https://l.top4top.io/p_3816zs2yn2.jpg" alt="Référence 2">
+      </div>
+      <div class="ref-item animate-up" data-image="https://a.top4top.io/p_38163yor63.jpg">
+        <img src="https://a.top4top.io/p_38163yor63.jpg" alt="Référence 3">
+      </div>
+      <div class="ref-item animate-up" data-image="https://b.top4top.io/p_38163cgzk4.jpg">
+        <img src="https://b.top4top.io/p_38163cgzk4.jpg" alt="Référence 4">
+      </div>
+      <div class="ref-item animate-up" data-image="https://c.top4top.io/p_3816071vc5.jpg">
+        <img src="https://c.top4top.io/p_3816071vc5.jpg" alt="Référence 5">
+      </div>
+      <div class="ref-item animate-up" data-image="https://d.top4top.io/p_3816wlvm76.jpg">
+        <img src="https://d.top4top.io/p_3816wlvm76.jpg" alt="Référence 6">
+      </div>
+      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816x48ko7.jpg">
+        <img src="https://e.top4top.io/p_3816x48ko7.jpg" alt="Référence 7">
+      </div>
+      <div class="ref-item animate-up" data-image="https://f.top4top.io/p_38163cvj88.jpg">
+        <img src="https://f.top4top.io/p_38163cvj88.jpg" alt="Référence 8">
+      </div>
+      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816vbx1m9.jpg">
+        <img src="https://g.top4top.io/p_3816vbx1m9.jpg" alt="Référence 9">
+      </div>
+      <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816urufo10.jpg">
+        <img src="https://h.top4top.io/p_3816urufo10.jpg" alt="Référence 10">
+      </div>
+      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816uwot51.jpg">
+        <img src="https://e.top4top.io/p_3816uwot51.jpg" alt="Référence 11">
+      </div>
+      <div class="ref-item animate-up" data-image="https://f.top4top.io/p_3816x8gfs2.jpg">
+        <img src="https://f.top4top.io/p_3816x8gfs2.jpg" alt="Référence 12">
+      </div>
+      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816uuqzk3.jpg">
+        <img src="https://g.top4top.io/p_3816uuqzk3.jpg" alt="Référence 13">
+      </div>
+      <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816l8pni4.jpg">
+        <img src="https://h.top4top.io/p_3816l8pni4.jpg" alt="Référence 14">
+      </div>
     </div>
   </section>
+
+  <!-- MODAL POUR L'AGRANDISSEMENT DES IMAGES -->
+  <div id="imageModal" class="image-modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Image agrandie">
+    </div>
+  </div>
 
   <!-- MISSION SECTION -->
   <section id="mission">
@@ -1417,6 +1520,45 @@
 
     createThumbnails();
     startAutoSlide();
+
+    // ========== SCRIPT POUR L'AGRANDISSEMENT DES IMAGES (MODAL) ==========
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.close-modal');
+    
+    // Sélectionner tous les éléments .ref-item
+    const refItems = document.querySelectorAll('.ref-item');
+    
+    refItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const imageUrl = this.getAttribute('data-image');
+        modal.style.display = 'block';
+        modalImg.src = imageUrl;
+        document.body.style.overflow = 'hidden'; // Empêche le défilement derrière le modal
+      });
+    });
+    
+    // Fermer le modal quand on clique sur le X
+    closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Fermer le modal quand on clique en dehors de l'image
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+    
+    // Fermer le modal avec la touche Echap
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
   </script>
 </body>
 </html>
