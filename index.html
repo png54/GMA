@@ -20,13 +20,10 @@
   <title>Global Media Algérie — Agence de Communication & Conseil Stratégique</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   
-  <!-- Font Awesome 6 (رابط محدث ومضمون) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
   
   <style>
-    /* ============================================================
-       RESET & ROOT VARIABLES
-    ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -57,9 +54,6 @@
       line-height: 1.6;
     }
 
-    /* ============================================================
-       NAVBAR
-    ============================================================ */
     #navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -170,9 +164,6 @@
       border-bottom: 1px solid var(--gray-light);
     }
 
-    /* ============================================================
-       HERO
-    ============================================================ */
     #hero {
       min-height: 100vh;
       background: linear-gradient(135deg, #0F3B6B 0%, #1E4D8C 50%, #2A5FA3 100%);
@@ -333,9 +324,6 @@
       transform: translateY(-2px);
     }
 
-    /* ============================================================
-       SECTIONS
-    ============================================================ */
     .section { padding: 90px 5%; }
     .section-alt { background: var(--off-white); }
 
@@ -376,9 +364,6 @@
       border-radius: 2px;
     }
 
-    /* ============================================================
-       ABOUT
-    ============================================================ */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -466,9 +451,6 @@
       border-radius: 4px;
     }
 
-    /* ============================================================
-       SERVICES
-    ============================================================ */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -568,9 +550,6 @@
       margin-top: 6px;
     }
 
-    /* ============================================================
-       GALERIE
-    ============================================================ */
     .gallery-premium {
       padding: 90px 5%;
       background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
@@ -688,9 +667,6 @@
       box-shadow: 0 4px 12px rgba(244,121,32,0.3);
     }
 
-    /* ============================================================
-       SECTION RÉFÉRENCE
-    ============================================================ */
     .reference-section {
       padding: 90px 5%;
       background: var(--white);
@@ -734,9 +710,6 @@
       pointer-events: none;
     }
 
-    /* ============================================================
-       MODAL
-    ============================================================ */
     .image-modal {
       display: none;
       position: fixed;
@@ -807,9 +780,6 @@
       transform: rotate(90deg);
     }
 
-    /* ============================================================
-       MISSION
-    ============================================================ */
     #mission {
       background: linear-gradient(135deg, #0F3B6B 0%, #1E4D8C 60%, #2A5FA3 100%);
       padding: 100px 5%;
@@ -850,9 +820,6 @@
       padding-top: 1.5rem;
     }
 
-    /* ============================================================
-       CONTACT
-    ============================================================ */
     .contact-grid {
       max-width: 800px;
       margin: 0 auto;
@@ -921,7 +888,6 @@
       font-style: italic;
     }
 
-    /* SOCIAL MEDIA */
     .social-section {
       margin-top: 3rem;
       text-align: center;
@@ -1000,9 +966,6 @@
     .social-link[data-platform="youtube"]:hover { background: #ff0000; }
     .social-link[data-platform="twitter"]:hover { background: #1da1f2; }
 
-    /* ============================================================
-       FOOTER
-    ============================================================ */
     footer {
       background: #0F3B6B;
       color: rgba(255,255,255,0.6);
@@ -1088,7 +1051,6 @@
     .footer-copy span { color: var(--orange); font-weight: 600; }
     .footer-made { font-size: 0.75rem; opacity: 0.5; }
 
-    /* ANIMATIONS */
     .animate-up {
       opacity: 0;
       transform: translateY(30px);
@@ -1099,7 +1061,6 @@
       transform: translateY(0);
     }
 
-    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
@@ -1165,7 +1126,6 @@
     <a href="#reference">Référence</a>
   </div>
 
-  <!-- HERO SECTION -->
   <section id="hero">
     <div class="hero-bg-dots">
       <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="#F47920">
@@ -1206,7 +1166,6 @@
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
   <section id="about" class="section section-alt">
     <div class="about-grid">
       <div class="about-visual animate-up">
@@ -1231,7 +1190,6 @@
     </div>
   </section>
 
-  <!-- SERVICES SECTION -->
   <section id="services" class="section">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Nos domaines d'expertise</div>
@@ -1260,7 +1218,6 @@
     </div>
   </section>
 
-  <!-- GALERIE SECTION -->
   <section id="gallery" class="gallery-premium">
     <div class="container-premium">
       <div class="section-header animate-up">
@@ -1268,13 +1225,10 @@
         <h2 class="section-title">Découvrez nos <em>réalisations</em></h2>
         <div class="section-line"></div>
       </div>
-
       <div class="main-image-container animate-up">
         <img id="mainGalleryImage" class="main-gallery-image" src="https://k.top4top.io/p_381658q9h1.jpg" alt="Image principale" loading="lazy">
       </div>
-
       <div class="thumbnails-container animate-up" id="thumbnailsContainer"></div>
-
       <div class="gallery-controls animate-up">
         <button class="gallery-nav-btn" id="prevBtn" aria-label="Image précédente"><i class="fas fa-chevron-left"></i></button>
         <button class="gallery-nav-btn" id="nextBtn" aria-label="Image suivante"><i class="fas fa-chevron-right"></i></button>
@@ -1282,8 +1236,7 @@
     </div>
   </section>
 
-  <!-- ========== SECTION RÉFÉRENCE ========== -->
-  <!-- الترتيب الجديد: 1, 2, 3, 16, 5, 6, 7, 8, 9, 10, 4, 12, 13, 14, 15, 11 -->
+  <!-- ========== SECTION RÉFÉRENCE - الترتيب الجديد 1,2,6,16,3,7,10,8,4,9,5,11,14,15,13,12 ========== -->
   <section id="reference" class="reference-section">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Nos partenaires & références</div>
@@ -1291,74 +1244,73 @@
       <div class="section-line"></div>
     </div>
     <div class="reference-grid">
-      <!-- 1. الصورة 1 -->
+      <!-- 1. رابط 1 -->
       <div class="ref-item animate-up" data-image="https://l.top4top.io/p_38162a8p81.jpg">
-        <img src="https://l.top4top.io/p_38162a8p81.jpg" alt="Référence 1" loading="lazy">
+        <img src="https://l.top4top.io/p_38162a8p81.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 2. الصورة 2 -->
+      <!-- 2. رابط 2 -->
       <div class="ref-item animate-up" data-image="https://a.top4top.io/p_3816arkee2.jpg">
-        <img src="https://a.top4top.io/p_3816arkee2.jpg" alt="Référence 2" loading="lazy">
+        <img src="https://a.top4top.io/p_3816arkee2.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 3. الصورة 3 -->
-      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816x48ko7.jpg">
-        <img src="https://e.top4top.io/p_3816x48ko7.jpg" alt="Référence 3" loading="lazy">
-      </div>
-      <!-- 4. الصورة 16 -->
-      <div class="ref-item animate-up" data-image="https://d.top4top.io/p_3816wlvm76.jpg">
-        <img src="https://d.top4top.io/p_3816wlvm76.jpg" alt="Référence 4" loading="lazy">
-      </div>
-      <!-- 5. الصورة 5 -->
-      <div class="ref-item animate-up" data-image="https://c.top4top.io/p_3816071vc5.jpg">
-        <img src="https://c.top4top.io/p_3816071vc5.jpg" alt="Référence 5" loading="lazy">
-      </div>
-      <!-- 6. الصورة 6 -->
+      <!-- 3. رابط 6 -->
       <div class="ref-item animate-up" data-image="https://f.top4top.io/p_3816x8gfs2.jpg">
-        <img src="https://f.top4top.io/p_3816x8gfs2.jpg" alt="Référence 6" loading="lazy">
+        <img src="https://f.top4top.io/p_3816x8gfs2.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 7. الصورة 7 -->
+      <!-- 4. رابط 16 -->
+      <div class="ref-item animate-up" data-image="https://d.top4top.io/p_3816wlvm76.jpg">
+        <img src="https://d.top4top.io/p_3816wlvm76.jpg" alt="Référence" loading="lazy">
+      </div>
+      <!-- 5. رابط 3 -->
+      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816x48ko7.jpg">
+        <img src="https://e.top4top.io/p_3816x48ko7.jpg" alt="Référence" loading="lazy">
+      </div>
+      <!-- 6. رابط 7 -->
       <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816uwot51.jpg">
-        <img src="https://e.top4top.io/p_3816uwot51.jpg" alt="Référence 7" loading="lazy">
+        <img src="https://e.top4top.io/p_3816uwot51.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 8. الصورة 8 -->
-      <div class="ref-item animate-up" data-image="https://f.top4top.io/p_38163cvj88.jpg">
-        <img src="https://f.top4top.io/p_38163cvj88.jpg" alt="Référence 8" loading="lazy">
-      </div>
-      <!-- 9. الصورة 9 -->
-      <div class="ref-item animate-up" data-image="https://k.top4top.io/p_3816rz0m31.jpg">
-        <img src="https://k.top4top.io/p_3816rz0m31.jpg" alt="Référence 9" loading="lazy">
-      </div>
-      <!-- 10. الصورة 10 -->
+      <!-- 7. رابط 10 -->
       <div class="ref-item animate-up" data-image="https://l.top4top.io/p_3816zs2yn2.jpg">
-        <img src="https://l.top4top.io/p_3816zs2yn2.jpg" alt="Référence 10" loading="lazy">
+        <img src="https://l.top4top.io/p_3816zs2yn2.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 11. الصورة 4 -->
+      <!-- 8. رابط 8 -->
+      <div class="ref-item animate-up" data-image="https://f.top4top.io/p_38163cvj88.jpg">
+        <img src="https://f.top4top.io/p_38163cvj88.jpg" alt="Référence" loading="lazy">
+      </div>
+      <!-- 9. رابط 4 -->
       <div class="ref-item animate-up" data-image="https://b.top4top.io/p_38163cgzk4.jpg">
-        <img src="https://b.top4top.io/p_38163cgzk4.jpg" alt="Référence 11" loading="lazy">
+        <img src="https://b.top4top.io/p_38163cgzk4.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 12. الصورة 12 -->
+      <!-- 10. رابط 9 -->
+      <div class="ref-item animate-up" data-image="https://k.top4top.io/p_3816rz0m31.jpg">
+        <img src="https://k.top4top.io/p_3816rz0m31.jpg" alt="Référence" loading="lazy">
+      </div>
+      <!-- 11. رابط 5 -->
+      <div class="ref-item animate-up" data-image="https://c.top4top.io/p_3816071vc5.jpg">
+        <img src="https://c.top4top.io/p_3816071vc5.jpg" alt="Référence" loading="lazy">
+      </div>
+      <!-- 12. رابط 11 -->
       <div class="ref-item animate-up" data-image="https://a.top4top.io/p_38163yor63.jpg">
-        <img src="https://a.top4top.io/p_38163yor63.jpg" alt="Référence 12" loading="lazy">
+        <img src="https://a.top4top.io/p_38163yor63.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 13. الصورة 13 -->
-      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816vbx1m9.jpg">
-        <img src="https://g.top4top.io/p_3816vbx1m9.jpg" alt="Référence 13" loading="lazy">
-      </div>
-      <!-- 14. الصورة 14 -->
+      <!-- 13. رابط 14 -->
       <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816uuqzk3.jpg">
-        <img src="https://g.top4top.io/p_3816uuqzk3.jpg" alt="Référence 14" loading="lazy">
+        <img src="https://g.top4top.io/p_3816uuqzk3.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 15. الصورة 15 -->
+      <!-- 14. رابط 15 -->
       <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816l8pni4.jpg">
-        <img src="https://h.top4top.io/p_3816l8pni4.jpg" alt="Référence 15" loading="lazy">
+        <img src="https://h.top4top.io/p_3816l8pni4.jpg" alt="Référence" loading="lazy">
       </div>
-      <!-- 16. الصورة 11 -->
+      <!-- 15. رابط 13 -->
+      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816vbx1m9.jpg">
+        <img src="https://g.top4top.io/p_3816vbx1m9.jpg" alt="Référence" loading="lazy">
+      </div>
+      <!-- 16. رابط 12 -->
       <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816urufo10.jpg">
-        <img src="https://h.top4top.io/p_3816urufo10.jpg" alt="Référence 16" loading="lazy">
+        <img src="https://h.top4top.io/p_3816urufo10.jpg" alt="Référence" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- MODAL -->
   <div id="imageModal" class="image-modal">
     <span class="close-modal" id="closeModalBtn" aria-label="Fermer">&times;</span>
     <div class="modal-content" id="modalContent">
@@ -1366,7 +1318,6 @@
     </div>
   </div>
 
-  <!-- MISSION SECTION -->
   <section id="mission">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Notre mission</div>
@@ -1379,7 +1330,6 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
   <section id="contact" class="section section-alt">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Contact</div>
@@ -1409,7 +1359,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
@@ -1434,11 +1383,9 @@
   </footer>
 
   <script>
-    // navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
     
-    // mobile menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if (hamburger && mobileMenu) {
@@ -1446,7 +1393,6 @@
       mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
     }
     
-    // animation observer
     const observer = new IntersectionObserver((entries) => { 
       entries.forEach((entry, i) => { 
         if (entry.isIntersecting) { 
@@ -1457,7 +1403,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
     
-    // active section in navbar
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => {
@@ -1472,7 +1417,6 @@
       });
     });
 
-    // ========== SCRIPT GALERIE ==========
     const imagesList = [
       'https://k.top4top.io/p_381658q9h1.jpg',
       'https://l.top4top.io/p_38164buiw2.jpg',
@@ -1552,7 +1496,6 @@
     createThumbnails();
     startAutoSlide();
 
-    // ========== MODAL ==========
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModalBtn');
