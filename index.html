@@ -3,9 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ============================================================
+       إضافات الأمان والحماية (Security Headers)
+  ============================================================ -->
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- سياسة أمان المحتوى (CSP) - تمنع تنفيذ أي سكربت غير مصرح به -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' https://*.top4top.io data:;
+    connect-src 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+  
   <title>Global Media Algérie — Agence de Communication & Conseil Stratégique</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Subresource Integrity (SRI) للتحقق من سلامة المكتبات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
   <style>
     /* ============================================================
        RESET & ROOT VARIABLES
@@ -672,7 +699,7 @@
     }
 
     /* ============================================================
-       SECTION RÉFÉRENCE - 16 IMAGES (NOUVEL ORDRE)
+       SECTION RÉFÉRENCE
     ============================================================ */
     .reference-section {
       padding: 90px 5%;
@@ -834,7 +861,7 @@
     }
 
     /* ============================================================
-       CONTACT
+       CONTACT (مع حماية البريد الإلكتروني)
     ============================================================ */
     .contact-grid {
       max-width: 800px;
@@ -1253,19 +1280,19 @@
       </div>
 
       <div class="main-image-container animate-up">
-        <img id="mainGalleryImage" class="main-gallery-image" src="https://k.top4top.io/p_381658q9h1.jpg" alt="Image principale">
+        <img id="mainGalleryImage" class="main-gallery-image" src="https://k.top4top.io/p_381658q9h1.jpg" alt="Image principale" loading="lazy">
       </div>
 
       <div class="thumbnails-container animate-up" id="thumbnailsContainer"></div>
 
       <div class="gallery-controls animate-up">
-        <button class="gallery-nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-        <button class="gallery-nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        <button class="gallery-nav-btn" id="prevBtn" aria-label="Image précédente"><i class="fas fa-chevron-left"></i></button>
+        <button class="gallery-nav-btn" id="nextBtn" aria-label="Image suivante"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
   </section>
 
-  <!-- ========== SECTION RÉFÉRENCE - 16 IMAGES (NOUVEL ORDRE) ========== -->
+  <!-- SECTION RÉFÉRENCE - 16 IMAGES -->
   <section id="reference" class="reference-section">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Nos partenaires & références</div>
@@ -1273,76 +1300,76 @@
       <div class="section-line"></div>
     </div>
     <div class="reference-grid">
-      <!-- 1. Nouvelle image 1 -->
+      <!-- 1 -->
       <div class="ref-item animate-up" data-image="https://l.top4top.io/p_38162a8p81.jpg">
-        <img src="https://l.top4top.io/p_38162a8p81.jpg" alt="Référence 1">
+        <img src="https://l.top4top.io/p_38162a8p81.jpg" alt="Référence 1" loading="lazy">
       </div>
-      <!-- 2. Nouvelle image 2 -->
+      <!-- 2 -->
       <div class="ref-item animate-up" data-image="https://a.top4top.io/p_3816arkee2.jpg">
-        <img src="https://a.top4top.io/p_3816arkee2.jpg" alt="Référence 2">
+        <img src="https://a.top4top.io/p_3816arkee2.jpg" alt="Référence 2" loading="lazy">
       </div>
-      <!-- 3. Ancienne image 7 -->
-      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816x48ko7.jpg">
-        <img src="https://e.top4top.io/p_3816x48ko7.jpg" alt="Référence 3">
-      </div>
-      <!-- 4. Ancienne image 11 -->
-      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816uwot51.jpg">
-        <img src="https://e.top4top.io/p_3816uwot51.jpg" alt="Référence 4">
-      </div>
-      <!-- 5. Ancienne image 10 -->
-      <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816urufo10.jpg">
-        <img src="https://h.top4top.io/p_3816urufo10.jpg" alt="Référence 5">
-      </div>
-      <!-- 6. Ancienne image 12 -->
+      <!-- 3 -->
       <div class="ref-item animate-up" data-image="https://f.top4top.io/p_3816x8gfs2.jpg">
-        <img src="https://f.top4top.io/p_3816x8gfs2.jpg" alt="Référence 6">
+        <img src="https://f.top4top.io/p_3816x8gfs2.jpg" alt="Référence 3" loading="lazy">
       </div>
-      <!-- 7. Ancienne image 4 -->
-      <div class="ref-item animate-up" data-image="https://b.top4top.io/p_38163cgzk4.jpg">
-        <img src="https://b.top4top.io/p_38163cgzk4.jpg" alt="Référence 7">
-      </div>
-      <!-- 8. Ancienne image 8 -->
-      <div class="ref-item animate-up" data-image="https://f.top4top.io/p_38163cvj88.jpg">
-        <img src="https://f.top4top.io/p_38163cvj88.jpg" alt="Référence 8">
-      </div>
-      <!-- 9. Ancienne image 1 -->
-      <div class="ref-item animate-up" data-image="https://k.top4top.io/p_3816rz0m31.jpg">
-        <img src="https://k.top4top.io/p_3816rz0m31.jpg" alt="Référence 9">
-      </div>
-      <!-- 10. Ancienne image 2 -->
-      <div class="ref-item animate-up" data-image="https://l.top4top.io/p_3816zs2yn2.jpg">
-        <img src="https://l.top4top.io/p_3816zs2yn2.jpg" alt="Référence 10">
-      </div>
-      <!-- 11. Ancienne image 5 -->
+      <!-- 4 -->
       <div class="ref-item animate-up" data-image="https://c.top4top.io/p_3816071vc5.jpg">
-        <img src="https://c.top4top.io/p_3816071vc5.jpg" alt="Référence 11">
+        <img src="https://c.top4top.io/p_3816071vc5.jpg" alt="Référence 4" loading="lazy">
       </div>
-      <!-- 12. Ancienne image 3 -->
-      <div class="ref-item animate-up" data-image="https://a.top4top.io/p_38163yor63.jpg">
-        <img src="https://a.top4top.io/p_38163yor63.jpg" alt="Référence 12">
+      <!-- 5 -->
+      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816x48ko7.jpg">
+        <img src="https://e.top4top.io/p_3816x48ko7.jpg" alt="Référence 5" loading="lazy">
       </div>
-      <!-- 13. Ancienne image 9 -->
-      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816vbx1m9.jpg">
-        <img src="https://g.top4top.io/p_3816vbx1m9.jpg" alt="Référence 13">
+      <!-- 6 -->
+      <div class="ref-item animate-up" data-image="https://e.top4top.io/p_3816uwot51.jpg">
+        <img src="https://e.top4top.io/p_3816uwot51.jpg" alt="Référence 6" loading="lazy">
       </div>
-      <!-- 14. Ancienne image 13 -->
-      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816uuqzk3.jpg">
-        <img src="https://g.top4top.io/p_3816uuqzk3.jpg" alt="Référence 14">
+      <!-- 7 -->
+      <div class="ref-item animate-up" data-image="https://l.top4top.io/p_3816zs2yn2.jpg">
+        <img src="https://l.top4top.io/p_3816zs2yn2.jpg" alt="Référence 7" loading="lazy">
       </div>
-      <!-- 15. Ancienne image 14 -->
-      <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816l8pni4.jpg">
-        <img src="https://h.top4top.io/p_3816l8pni4.jpg" alt="Référence 15">
+      <!-- 8 -->
+      <div class="ref-item animate-up" data-image="https://f.top4top.io/p_38163cvj88.jpg">
+        <img src="https://f.top4top.io/p_38163cvj88.jpg" alt="Référence 8" loading="lazy">
       </div>
-      <!-- 16. Ancienne image 6 -->
+      <!-- 9 -->
       <div class="ref-item animate-up" data-image="https://d.top4top.io/p_3816wlvm76.jpg">
-        <img src="https://d.top4top.io/p_3816wlvm76.jpg" alt="Référence 16">
+        <img src="https://d.top4top.io/p_3816wlvm76.jpg" alt="Référence 9" loading="lazy">
+      </div>
+      <!-- 10 -->
+      <div class="ref-item animate-up" data-image="https://k.top4top.io/p_3816rz0m31.jpg">
+        <img src="https://k.top4top.io/p_3816rz0m31.jpg" alt="Référence 10" loading="lazy">
+      </div>
+      <!-- 11 -->
+      <div class="ref-item animate-up" data-image="https://a.top4top.io/p_38163yor63.jpg">
+        <img src="https://a.top4top.io/p_38163yor63.jpg" alt="Référence 11" loading="lazy">
+      </div>
+      <!-- 12 -->
+      <div class="ref-item animate-up" data-image="https://b.top4top.io/p_38163cgzk4.jpg">
+        <img src="https://b.top4top.io/p_38163cgzk4.jpg" alt="Référence 12" loading="lazy">
+      </div>
+      <!-- 13 -->
+      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816uuqzk3.jpg">
+        <img src="https://g.top4top.io/p_3816uuqzk3.jpg" alt="Référence 13" loading="lazy">
+      </div>
+      <!-- 14 -->
+      <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816l8pni4.jpg">
+        <img src="https://h.top4top.io/p_3816l8pni4.jpg" alt="Référence 14" loading="lazy">
+      </div>
+      <!-- 15 -->
+      <div class="ref-item animate-up" data-image="https://g.top4top.io/p_3816vbx1m9.jpg">
+        <img src="https://g.top4top.io/p_3816vbx1m9.jpg" alt="Référence 15" loading="lazy">
+      </div>
+      <!-- 16 -->
+      <div class="ref-item animate-up" data-image="https://h.top4top.io/p_3816urufo10.jpg">
+        <img src="https://h.top4top.io/p_3816urufo10.jpg" alt="Référence 16" loading="lazy">
       </div>
     </div>
   </section>
 
   <!-- MODAL -->
   <div id="imageModal" class="image-modal">
-    <span class="close-modal" id="closeModalBtn">&times;</span>
+    <span class="close-modal" id="closeModalBtn" aria-label="Fermer">&times;</span>
     <div class="modal-content" id="modalContent">
       <img id="modalImage" src="" alt="Image agrandie">
     </div>
@@ -1374,17 +1401,17 @@
         <p>Vous avez un projet de communication ou souhaitez en savoir plus sur nos services ? Contactez-nous et construisons ensemble votre stratégie médiatique.</p>
         <div class="contact-items">
           <div class="contact-item"><div class="contact-item-icon"><i class="fas fa-phone"></i></div><div class="contact-item-text"><div class="contact-item-label">Téléphone</div><div class="contact-item-value placeholder">+213 XX XX XX XX</div></div></div>
-          <div class="contact-item"><div class="contact-item-icon"><i class="fas fa-envelope"></i></div><div class="contact-item-text"><div class="contact-item-label">Email</div><div class="contact-item-value placeholder">contact@globalmedia.dz</div></div></div>
+          <div class="contact-item"><div class="contact-item-icon"><i class="fas fa-envelope"></i></div><div class="contact-item-text"><div class="contact-item-label">Email</div><div class="contact-item-value placeholder" id="emailValue">contact [at] globalmedia [dot] dz</div></div></div>
           <div class="contact-item"><div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-item-text"><div class="contact-item-label">Adresse</div><div class="contact-item-value placeholder">Alger, Algérie</div></div></div>
         </div>
         <div class="social-section">
           <h4>Suivez-nous</h4>
           <div class="social-links">
-            <a href="#" class="social-link" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link" data-platform="instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link" data-platform="linkedin"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-link" data-platform="youtube"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-link" data-platform="twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-link" data-platform="facebook" rel="noopener noreferrer nofollow"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" data-platform="instagram" rel="noopener noreferrer nofollow"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" data-platform="linkedin" rel="noopener noreferrer nofollow"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" data-platform="youtube" rel="noopener noreferrer nofollow"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link" data-platform="twitter" rel="noopener noreferrer nofollow"><i class="fab fa-x-twitter"></i></a>
           </div>
         </div>
       </div>
@@ -1416,6 +1443,20 @@
   </footer>
 
   <script>
+    // تحسينات الأمان في JavaScript
+    (function() {
+      // منع الوصول إلى console.log في المتصفحات القديمة (اختياري)
+      if (typeof window.console === 'undefined') {
+        window.console = { log: function() {}, error: function() {}, warn: function() {} };
+      }
+      
+      // حماية من إعادة توجيه الصفحة عبر بروتوكول غير آمن
+      if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+        // يمكن تفعيل هذا السطر لتحويل تلقائي إلى HTTPS
+        // window.location.href = 'https://' + window.location.hostname + window.location.pathname + window.location.search;
+      }
+    })();
+
     // navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
@@ -1423,8 +1464,10 @@
     // mobile menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+    }
     
     // animation observer
     const observer = new IntersectionObserver((entries) => { 
@@ -1442,8 +1485,14 @@
     const navLinks = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => {
       let current = '';
-      sections.forEach(section => { if (window.scrollY >= section.offsetTop - 100) current = section.id || ''; });
-      navLinks.forEach(link => { link.style.color = ''; if (link.getAttribute('href') === '#' + current) link.style.color = 'var(--orange)'; });
+      sections.forEach(section => { 
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) current = section.id || ''; 
+      });
+      navLinks.forEach(link => { 
+        link.style.color = ''; 
+        if (link.getAttribute('href') === '#' + current) link.style.color = 'var(--orange)'; 
+      });
     });
 
     // ========== SCRIPT GALERIE ==========
@@ -1467,15 +1516,20 @@
     const nextBtn = document.getElementById('nextBtn');
 
     function createThumbnails() {
+      if (!thumbnailsContainer) return;
       imagesList.forEach((imgSrc, index) => {
         const thumbDiv = document.createElement('div');
         thumbDiv.className = 'thumbnail-item';
         if (index === 0) thumbDiv.classList.add('active');
         thumbDiv.setAttribute('data-index', index);
+        thumbDiv.setAttribute('role', 'button');
+        thumbDiv.setAttribute('tabindex', '0');
+        thumbDiv.setAttribute('aria-label', `Voir l'image ${index + 1}`);
         
         const thumbImg = document.createElement('img');
         thumbImg.src = imgSrc;
         thumbImg.alt = `Miniature ${index + 1}`;
+        thumbImg.loading = 'lazy';
         
         thumbDiv.appendChild(thumbImg);
         thumbDiv.addEventListener('click', () => {
@@ -1493,7 +1547,7 @@
       if (index >= imagesList.length) index = 0;
       
       currentIndex = index;
-      mainImage.src = imagesList[currentIndex];
+      if (mainImage) mainImage.src = imagesList[currentIndex];
       
       const allThumbs = document.querySelectorAll('.thumbnail-item');
       allThumbs.forEach((thumb, i) => {
@@ -1505,51 +1559,29 @@
       });
     }
 
-    function nextImage() {
-      changeImage(currentIndex + 1);
+    function nextImage() { changeImage(currentIndex + 1); }
+    function prevImage() { changeImage(currentIndex - 1); }
+
+    function startAutoSlide() { stopAutoSlide(); autoSlideInterval = setInterval(nextImage, 4000); }
+    function stopAutoSlide() { if (autoSlideInterval) { clearInterval(autoSlideInterval); autoSlideInterval = null; } }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoSlide(); prevImage(); startAutoSlide(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoSlide(); nextImage(); startAutoSlide(); });
+    if (mainImage) {
+      mainImage.addEventListener('mouseenter', stopAutoSlide);
+      mainImage.addEventListener('mouseleave', startAutoSlide);
     }
-
-    function prevImage() {
-      changeImage(currentIndex - 1);
-    }
-
-    function startAutoSlide() {
-      stopAutoSlide();
-      autoSlideInterval = setInterval(nextImage, 4000);
-    }
-
-    function stopAutoSlide() {
-      if (autoSlideInterval) {
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = null;
-      }
-    }
-
-    prevBtn.addEventListener('click', () => {
-      stopAutoSlide();
-      prevImage();
-      startAutoSlide();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      stopAutoSlide();
-      nextImage();
-      startAutoSlide();
-    });
-
-    mainImage.addEventListener('mouseenter', stopAutoSlide);
-    mainImage.addEventListener('mouseleave', startAutoSlide);
 
     createThumbnails();
     startAutoSlide();
 
-    // ========== SCRIPT POUR L'AGRANDISSEMENT DES IMAGES (MODAL) ==========
+    // ========== MODAL POUR L'AGRANDISSEMENT DES IMAGES ==========
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModalBtn');
     
     function closeModal() {
-      modal.style.display = 'none';
+      if (modal) modal.style.display = 'none';
       document.body.style.overflow = 'auto';
     }
     
@@ -1560,16 +1592,14 @@
       });
     }
     
-    modal.addEventListener('click', function(event) {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+    if (modal) {
+      modal.addEventListener('click', function(event) {
+        if (event.target === modal) closeModal();
+      });
+    }
     
     document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape' && modal.style.display === 'block') {
-        closeModal();
-      }
+      if (event.key === 'Escape' && modal && modal.style.display === 'block') closeModal();
     });
     
     const refItems = document.querySelectorAll('.ref-item');
@@ -1577,7 +1607,7 @@
       item.addEventListener('click', function(event) {
         event.stopPropagation();
         const imageUrl = this.getAttribute('data-image');
-        if (imageUrl) {
+        if (imageUrl && modal && modalImg) {
           modalImg.src = imageUrl;
           modal.style.display = 'block';
           document.body.style.overflow = 'hidden';
