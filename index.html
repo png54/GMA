@@ -1083,6 +1083,10 @@
       .ref-item img {
         max-width: 70px;
       }
+      .thumbnail-item {
+        width: 60px;
+        height: 45px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1092,6 +1096,10 @@
       }
       .ref-item img {
         max-width: 55px;
+      }
+      .thumbnail-item {
+        width: 50px;
+        height: 38px;
       }
     }
   </style>
@@ -1218,6 +1226,7 @@
     </div>
   </section>
 
+  <!-- ========== SECTION GALERIE - معرض الصور ========== -->
   <section id="gallery" class="gallery-premium">
     <div class="container-premium">
       <div class="section-header animate-up">
@@ -1228,7 +1237,12 @@
       <div class="main-image-container animate-up">
         <img id="mainGalleryImage" class="main-gallery-image" src="gallery1.jpg" alt="Image principale" loading="lazy">
       </div>
-      <div class="thumbnails-container animate-up" id="thumbnailsContainer"></div>
+      
+      <!-- Thumbnails: 3 seulement -->
+      <div class="thumbnails-container animate-up" id="thumbnailsContainer">
+        <!-- سيتم إنشاؤها بواسطة JavaScript -->
+      </div>
+      
       <div class="gallery-controls animate-up">
         <button class="gallery-nav-btn" id="prevBtn" aria-label="Image précédente"><i class="fas fa-chevron-left"></i></button>
         <button class="gallery-nav-btn" id="nextBtn" aria-label="Image suivante"><i class="fas fa-chevron-right"></i></button>
@@ -1236,7 +1250,7 @@
     </div>
   </section>
 
-  <!-- ========== SECTION RÉFÉRENCE - الصور المعدلة ========== -->
+  <!-- ========== SECTION RÉFÉRENCE - الشركاء ========== -->
   <section id="reference" class="reference-section">
     <div class="section-header animate-up">
       <div class="section-eyebrow">Nos partenaires & références</div>
@@ -1417,6 +1431,7 @@
       });
     });
 
+    // ========== GALERIE AVEC 3 THUMBNAILS SEULEMENT ==========
     const imagesList = [
       'gallery1.jpg',
       'gallery2.jpg',
@@ -1436,26 +1451,49 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    function createThumbnails() {
+    // دالة لعرض 3 صور مصغرة فقط حسب المؤشر الحالي
+    function renderThumbnails() {
       if (!thumbnailsContainer) return;
-      imagesList.forEach((imgSrc, index) => {
+      thumbnailsContainer.innerHTML = '';
+      
+      const totalImages = imagesList.length;
+      const indices = [];
+      
+      // نضيف الصورة الحالية
+      indices.push(currentIndex);
+      
+      // نضيف الصورتين التاليتين (مع دوران إذا وصلنا للنهاية)
+      let next1 = (currentIndex + 1) % totalImages;
+      let next2 = (currentIndex + 2) % totalImages;
+      
+      if (next1 !== currentIndex) indices.push(next1);
+      if (next2 !== currentIndex && next2 !== next1) indices.push(next2);
+      
+      // إذا كان لدينا أقل من 3 صور، نضيف صورًا إضافية
+      while (indices.length < 3 && indices.length < totalImages) {
+        let candidate = (indices[indices.length - 1] + 1) % totalImages;
+        if (!indices.includes(candidate)) indices.push(candidate);
+      }
+      
+      // إنشاء العناصر
+      indices.forEach((imgIndex) => {
         const thumbDiv = document.createElement('div');
         thumbDiv.className = 'thumbnail-item';
-        if (index === 0) thumbDiv.classList.add('active');
-        thumbDiv.setAttribute('data-index', index);
+        if (imgIndex === currentIndex) thumbDiv.classList.add('active');
+        thumbDiv.setAttribute('data-index', imgIndex);
         thumbDiv.setAttribute('role', 'button');
         thumbDiv.setAttribute('tabindex', '0');
-        thumbDiv.setAttribute('aria-label', `Voir l'image ${index + 1}`);
+        thumbDiv.setAttribute('aria-label', `Voir l'image ${imgIndex + 1}`);
         
         const thumbImg = document.createElement('img');
-        thumbImg.src = imgSrc;
-        thumbImg.alt = `Miniature ${index + 1}`;
+        thumbImg.src = imagesList[imgIndex];
+        thumbImg.alt = `Miniature ${imgIndex + 1}`;
         thumbImg.loading = 'lazy';
         
         thumbDiv.appendChild(thumbImg);
         thumbDiv.addEventListener('click', () => {
           stopAutoSlide();
-          changeImage(index);
+          changeImage(imgIndex);
           startAutoSlide();
         });
         
@@ -1464,38 +1502,43 @@
     }
 
     function changeImage(index) {
-      if (index < 0) index = 0;
+      if (index < 0) index = imagesList.length - 1;
       if (index >= imagesList.length) index = 0;
       
       currentIndex = index;
+      
       if (mainImage) mainImage.src = imagesList[currentIndex];
       
-      const allThumbs = document.querySelectorAll('.thumbnail-item');
-      allThumbs.forEach((thumb, i) => {
-        if (i === currentIndex) {
-          thumb.classList.add('active');
-        } else {
-          thumb.classList.remove('active');
-        }
-      });
+      renderThumbnails();
     }
 
     function nextImage() { changeImage(currentIndex + 1); }
     function prevImage() { changeImage(currentIndex - 1); }
 
-    function startAutoSlide() { stopAutoSlide(); autoSlideInterval = setInterval(nextImage, 4000); }
-    function stopAutoSlide() { if (autoSlideInterval) { clearInterval(autoSlideInterval); autoSlideInterval = null; } }
+    function startAutoSlide() { 
+      stopAutoSlide(); 
+      autoSlideInterval = setInterval(nextImage, 4000); 
+    }
+    
+    function stopAutoSlide() { 
+      if (autoSlideInterval) { 
+        clearInterval(autoSlideInterval); 
+        autoSlideInterval = null; 
+      } 
+    }
 
     if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoSlide(); prevImage(); startAutoSlide(); });
     if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoSlide(); nextImage(); startAutoSlide(); });
+    
     if (mainImage) {
       mainImage.addEventListener('mouseenter', stopAutoSlide);
       mainImage.addEventListener('mouseleave', startAutoSlide);
     }
 
-    createThumbnails();
+    renderThumbnails();
     startAutoSlide();
 
+    // ========== MODAL ==========
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModalBtn');
@@ -1522,6 +1565,18 @@
       if (event.key === 'Escape' && modal && modal.style.display === 'block') closeModal();
     });
     
+    // النقر على الصورة الرئيسية لتكبيرها
+    if (mainImage) {
+      mainImage.addEventListener('click', function() {
+        if (modal && modalImg) {
+          modalImg.src = this.src;
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+    
+    // النقر على صور الشركاء
     const refItems = document.querySelectorAll('.ref-item');
     refItems.forEach(item => {
       item.addEventListener('click', function(event) {
