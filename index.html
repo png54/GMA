@@ -575,7 +575,7 @@
 
     .main-image-container {
       width: 100%;
-      padding-bottom: 56.25%; /* نسبة 16:9 */
+      padding-bottom: 56.25%;
       position: relative;
       overflow: hidden;
     }
@@ -605,7 +605,6 @@
       transform: scale(1.03);
     }
 
-    /* ترقيم الصورة */
     .image-counter {
       position: absolute;
       bottom: 20px;
@@ -627,7 +626,6 @@
       color: var(--orange);
     }
 
-    /* أزرار التنقل على الصورة */
     .gallery-nav-overlay {
       position: absolute;
       top: 50%;
@@ -664,32 +662,37 @@
       box-shadow: 0 0 30px rgba(244, 121, 32, 0.4);
     }
 
-    /* حاوية المصغرات */
+    /* ====== المصغرات - تصميم جديد مع الصورة النشطة في المنتصف ====== */
     .thumbnails-wrapper {
       max-width: 800px;
       margin: 25px auto 0;
+      overflow: hidden;
       position: relative;
+      padding: 10px 0;
     }
 
     .thumbnails-scroll {
       display: flex;
       gap: 12px;
       justify-content: center;
-      overflow: hidden;
+      align-items: center;
       padding: 5px 0;
+      transition: all 0.5s ease;
     }
 
     .thumbnail-item {
-      width: 110px;
-      height: 75px;
+      width: 120px;
+      height: 80px;
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
       border: 3px solid transparent;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: relative;
       flex-shrink: 0;
+      opacity: 0.5;
+      transform: scale(0.85);
     }
 
     .thumbnail-item img {
@@ -707,28 +710,32 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(30,77,140,0.4), rgba(244,121,32,0.2));
+      background: linear-gradient(135deg, rgba(30,77,140,0.5), rgba(244,121,32,0.2));
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
-    .thumbnail-item:hover::after {
-      opacity: 1;
+    .thumbnail-item:hover {
+      transform: translateY(-3px) scale(0.9);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 
-    .thumbnail-item:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    .thumbnail-item:hover::after {
+      opacity: 0;
     }
 
     .thumbnail-item:hover img {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
+    /* الصورة النشطة - في المنتصف وأكبر */
     .thumbnail-item.active {
       border-color: var(--orange);
-      transform: translateY(-5px) scale(1.05);
+      transform: scale(1);
+      opacity: 1;
       box-shadow: 0 8px 30px rgba(244, 121, 32, 0.35);
+      z-index: 2;
+      position: relative;
     }
 
     .thumbnail-item.active::after {
@@ -739,7 +746,12 @@
       transform: scale(1.05);
     }
 
-    /* نقاط التقدم */
+    /* الصور المجاورة للنشطة */
+    .thumbnail-item.near-active {
+      opacity: 0.8;
+      transform: scale(0.92);
+    }
+
     .progress-dots {
       display: flex;
       justify-content: center;
@@ -1193,6 +1205,22 @@
         height: 40px;
         font-size: 1rem;
       }
+      .thumbnails-scroll {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 5px 10px;
+        gap: 8px;
+      }
+      .thumbnail-item {
+        opacity: 0.7;
+        transform: scale(0.9);
+        min-width: 70px;
+      }
+      .thumbnail-item.active {
+        transform: scale(1);
+        opacity: 1;
+        min-width: 80px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1206,6 +1234,10 @@
       .thumbnail-item {
         width: 60px;
         height: 42px;
+        min-width: 55px;
+      }
+      .thumbnail-item.active {
+        min-width: 65px;
       }
       .image-counter {
         font-size: 0.7rem;
@@ -1352,12 +1384,10 @@
           <img id="mainGalleryImage" class="main-gallery-image" src="gallery1.jpg" alt="Image principale" loading="lazy">
         </div>
         
-        <!-- ترقيم الصورة -->
         <div class="image-counter">
           <span id="currentImageNum">1</span> / <span id="totalImagesNum">8</span>
         </div>
 
-        <!-- أزرار التنقل -->
         <div class="gallery-nav-overlay">
           <button class="gallery-nav-overlay-btn" id="prevBtn" aria-label="Précédent">
             <i class="fas fa-chevron-left"></i>
@@ -1368,12 +1398,10 @@
         </div>
       </div>
 
-      <!-- المصغرات -->
       <div class="thumbnails-wrapper animate-up">
         <div class="thumbnails-scroll" id="thumbnailsContainer"></div>
       </div>
 
-      <!-- نقاط التقدم -->
       <div class="progress-dots" id="progressDots"></div>
     </div>
   </section>
@@ -1512,7 +1540,7 @@
     });
 
     // ============================================================
-    //  ألبوم الصور الاحترافي - مع حركة معاكسة
+    //  ألبوم الصور الاحترافي
     // ============================================================
     const imagesList = [
       'gallery1.jpg',
@@ -1530,7 +1558,6 @@
     let isTransitioning = false;
     const totalImages = imagesList.length;
 
-    // عناصر DOM
     const mainImage = document.getElementById('mainGalleryImage');
     const thumbnailsContainer = document.getElementById('thumbnailsContainer');
     const prevBtn = document.getElementById('prevBtn');
@@ -1539,7 +1566,6 @@
     const totalNumEl = document.getElementById('totalImagesNum');
     const progressDots = document.getElementById('progressDots');
 
-    // عرض العدد الإجمالي
     if (totalNumEl) totalNumEl.textContent = totalImages;
 
     // إنشاء نقاط التقدم
@@ -1560,15 +1586,24 @@
       }
     }
 
-    // عرض المصغرات (جميعها مع تمييز النشط)
+    // عرض المصغرات - الصورة النشطة في المنتصف
     function renderThumbnails() {
       if (!thumbnailsContainer) return;
       thumbnailsContainer.innerHTML = '';
       
+      const total = imagesList.length;
+      
       imagesList.forEach((imgSrc, index) => {
         const thumbDiv = document.createElement('div');
         thumbDiv.className = 'thumbnail-item';
-        if (index === currentIndex) thumbDiv.classList.add('active');
+        
+        // تحديد الفئة حسب الموقع بالنسبة للصورة النشطة
+        if (index === currentIndex) {
+          thumbDiv.classList.add('active');
+        } else if (index === (currentIndex - 1 + total) % total || index === (currentIndex + 1) % total) {
+          thumbDiv.classList.add('near-active');
+        }
+        
         thumbDiv.setAttribute('data-index', index);
         thumbDiv.setAttribute('role', 'button');
         thumbDiv.setAttribute('tabindex', '0');
@@ -1589,17 +1624,18 @@
         thumbnailsContainer.appendChild(thumbDiv);
       });
 
-      // التمرير إلى المصغرة النشطة
-      const activeThumb = thumbnailsContainer.querySelector('.thumbnail-item.active');
-      if (activeThumb) {
-        const containerWidth = thumbnailsContainer.offsetWidth;
-        const thumbWidth = activeThumb.offsetWidth;
-        const scrollPosition = activeThumb.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
-        thumbnailsContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+      // تمرير الحاوية لجعل الصورة النشطة في المنتصف (للشاشات الكبيرة)
+      if (window.innerWidth > 768) {
+        const activeThumb = thumbnailsContainer.querySelector('.thumbnail-item.active');
+        if (activeThumb) {
+          const containerWidth = thumbnailsContainer.offsetWidth;
+          const thumbWidth = activeThumb.offsetWidth;
+          const scrollPosition = activeThumb.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
+          thumbnailsContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        }
       }
     }
 
-    // تحديث نقاط التقدم
     function updateDots() {
       if (!progressDots) return;
       const dots = progressDots.querySelectorAll('.progress-dot');
@@ -1608,7 +1644,6 @@
       });
     }
 
-    // تغيير الصورة مع تأثير احترافي
     function changeImage(index) {
       if (isTransitioning) return;
       if (index < 0) index = totalImages - 1;
@@ -1617,23 +1652,18 @@
 
       isTransitioning = true;
 
-      // تأثير الخروج
       mainImage.classList.add('fade-out');
       mainImage.classList.remove('fade-in');
 
       setTimeout(() => {
-        // تغيير الصورة
         currentIndex = index;
         mainImage.src = imagesList[currentIndex];
         
-        // تحديث العداد
         if (currentNumEl) currentNumEl.textContent = currentIndex + 1;
         
-        // تحديث المصغرات
         renderThumbnails();
         updateDots();
         
-        // تأثير الدخول
         mainImage.classList.remove('fade-out');
         mainImage.classList.add('fade-in');
         
@@ -1653,13 +1683,12 @@
       changeImage(currentIndex - 1); 
     }
 
-    // التشغيل التلقائي - اتجاه معاكس (من اليسار إلى اليمين)
+    // التشغيل التلقائي - من 1 إلى 8 (تصاعدي)
     function startAutoSlide() { 
       stopAutoSlide(); 
       autoSlideInterval = setInterval(() => {
-        // الحركة المعاكسة: ننتقل للخلف بدلاً من الأمام
         if (!isTransitioning) {
-          changeImage(currentIndex - 1);
+          changeImage(currentIndex + 1);
         }
       }, 4000); 
     }
@@ -1671,16 +1700,13 @@
       } 
     }
 
-    // أحداث الأزرار
     if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoSlide(); prevImage(); startAutoSlide(); });
     if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoSlide(); nextImage(); startAutoSlide(); });
     
-    // إيقاف التشغيل التلقائي عند تمرير الماوس
     if (mainImage) {
       mainImage.addEventListener('mouseenter', stopAutoSlide);
       mainImage.addEventListener('mouseleave', startAutoSlide);
       
-      // النقر على الصورة لتكبيرها
       mainImage.addEventListener('click', function() {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -1692,7 +1718,19 @@
       });
     }
 
-    // التهيئة
+    // إعادة التمرير عند تغيير حجم الشاشة
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        const activeThumb = thumbnailsContainer?.querySelector('.thumbnail-item.active');
+        if (activeThumb) {
+          const containerWidth = thumbnailsContainer.offsetWidth;
+          const thumbWidth = activeThumb.offsetWidth;
+          const scrollPosition = activeThumb.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
+          thumbnailsContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        }
+      }
+    });
+
     createProgressDots();
     renderThumbnails();
     if (currentNumEl) currentNumEl.textContent = 1;
@@ -1727,7 +1765,6 @@
       if (event.key === 'Escape' && modal && modal.style.display === 'block') closeModal();
     });
     
-    // النقر على صور الشركاء
     const refItems = document.querySelectorAll('.ref-item');
     refItems.forEach(item => {
       item.addEventListener('click', function(event) {
